@@ -1,0 +1,7 @@
+.reports-link div{
+	text-decoration: none;
+}
+.reports-link div:hover{
+	opacity: 0.9;
+	text-decoration: none;
+}
