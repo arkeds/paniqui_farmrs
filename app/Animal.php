@@ -8,6 +8,6 @@ class Animal extends Model
 {
     //
     protected $table = 'animals';
-    protected $fillable = ["id", "description"];
+    protected $fillable = ["description"];
     public $timestamps = false;
 }

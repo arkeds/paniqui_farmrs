@@ -8,6 +8,6 @@ class Crop extends Model
 {
     //
     protected $table = "crops";
-    protected $fillable = ["id", "description"];
+    protected $fillable = ["description"];
     public $timestamps = false;
 }

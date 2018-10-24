@@ -38,7 +38,7 @@
         {{-- <td></td> --}}
         <td>
           <a href="{{url("/farms/".$farm->id)}}" class="btn btn-success btn-sm">View Farm</a>
-          <a href="{{url("/farms/".$farm->id."/croppings/create")}}" class="btn btn-success btn-sm">New Cropping Entry</a>
+          {{-- <a href="{{url("/farms/".$farm->id."/croppings/create")}}" class="btn btn-success btn-sm">New Cropping Entry</a> --}}
         </td>
       </tr>
       @endforeach

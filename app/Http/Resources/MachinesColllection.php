@@ -16,7 +16,7 @@ class MachinesColllection extends ResourceCollection
     {
         //return parent::toArray($request);
         return [
-             'data' => $this->collection->transform(function($machine){
+             'data' => $this->collection->where('is_accessory', 0)->transform(function($machine){
                 return [
                     'code' => $machine->id,
                     'machine' => $machine->machCode.'::'.$machine->machName,

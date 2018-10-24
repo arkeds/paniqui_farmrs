@@ -19,4 +19,11 @@ class AnimalController extends Controller
     	$animal->save();
     	return redirect("/animals")->with('message', 'Farm Animal Added.');
     }
+
+    public function update($id, Request $request){
+        $animal = Animal::findOrFail($id);
+        $animal->description = $request->animal_name ? $request->animal_name : $animal->description;
+        $animal->save();
+        return redirect('/animals')->with('message', 'Animal Updated');
+    }
 }

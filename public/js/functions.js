@@ -39,7 +39,6 @@ function getMachines(machine_type){
     machine_select.add(option);
 
 	$.get(url, function(response, status){
-		
 		$.each(response.data, function(i, item) {
 		  	option = document.createElement('option');
 	        option.text = item.machine;

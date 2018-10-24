@@ -58,16 +58,19 @@ Route::group(['prefix' => 'farms', 'middleware' => ['auth']], function() {
 Route::group(['prefix' => 'animals', 'middleware' => ['auth', 'admin']], function() {
     Route::get('/', 'AnimalController@index');
     Route::post('/', 'AnimalController@store');
+    Route::patch('/{id}', 'AnimalController@update');
 });
 
 Route::group(['prefix' => 'trees', 'middleware' => ['auth', 'admin']], function() {
     Route::get('/', 'TreeController@index');
     Route::post('/', 'TreeController@store');
+    Route::patch('/{id}', 'TreeController@update');
 });
 
 Route::group(['prefix' => 'crops', 'middleware' => ['auth', 'admin']], function() {
     Route::get('/', 'CropController@index');
     Route::post('/', 'CropController@store');
+    Route::patch('/{id}', 'CropController@update');
 });
 
 Route::group(['prefix' => 'users', 'middleware' => ['auth', 'admin']], function() {

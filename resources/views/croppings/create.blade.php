@@ -13,9 +13,9 @@
 				<div class="form-group">
 					<label>Cropping No:</label>
 					<select class="form-control" name="crop_no" required>
-						<option value="1">1st Croppings</option>
-						<option value="2">2nd Croppings</option>
-						<option value="3">3rd Croppings</option>
+						<option value="1">1st Cropping</option>
+						<option value="2">2nd Cropping</option>
+						<option value="3">3rd Cropping</option>
 					</select>
 				</div>
 			</div>

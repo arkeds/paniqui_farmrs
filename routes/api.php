@@ -19,3 +19,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('/usage/{purpose}/machines', 'API\MachinePurposeController@machines');
 Route::get('/farmers', 'API\FarmerController@index');
+Route::get('/animal/{id}', 'API\AnimalController@show');
+Route::get('/tree/{id}', 'API\TreeController@show');
+Route::get('/crop/{id}', 'API\CropController@show');
