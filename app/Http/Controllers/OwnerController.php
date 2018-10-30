@@ -48,6 +48,7 @@ class OwnerController extends Controller
             $oOwner->coop = strtoupper($coopname);
             $oOwner->house = strtoupper($request->address);
             $oOwner->brgy = $request->barangay;
+            $oOwner->created_by = \Auth::user()->id;
 
             $oProfile = new OwnerProfile();
             $oProfile->id = $owner_id;

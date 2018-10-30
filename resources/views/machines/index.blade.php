@@ -21,7 +21,7 @@
   	
     
   </div>
-  <table class="table">
+  <table class="table ">
   	<thead>
   		<tr>
   			<th>Machine/Equipment</th>
@@ -40,7 +40,7 @@
         <td>{{$machine->acquisition_year}}</td>
         <td>{{$machine->machineStatus()}}</td>
         <td>{{$machine->created_at}}</td>
-        <td></td>
+        <td><a class="btn btn-warning btn-sm" href="{{url('/farmers/'.$owner->id.'/machines/'.$machine->machId.'/edit')}}"><i class="fa fa-edit"></i></a></td>
       </tr>
       @endforeach
     </tbody>

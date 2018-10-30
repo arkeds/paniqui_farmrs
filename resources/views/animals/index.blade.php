@@ -93,6 +93,7 @@
 <script type="text/javascript">
   $(document).ready(function() {
     $('.edit').on('click', function() {
+      $('#animal_name').val('');
       let http = '{{url("/api/animal")}}';
       let patchUrl = '{{url("/animals")}}'
       let id = $(this).data('animal');

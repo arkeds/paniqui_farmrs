@@ -60,4 +60,8 @@ class Owner extends Model
     public function farms(){
         return $this->hasMany('App\FarmerFarm', 'owner_id');
     }
+
+    public function creator(){
+        return $this->hasOne('App\User', 'id', 'created_by');
+    }
 }

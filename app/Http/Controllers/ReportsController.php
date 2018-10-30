@@ -69,7 +69,7 @@ class ReportsController extends Controller
 
     ///used for datatable
     public function getFarmers(){
-        $farmers = Owner::orderBy('created_at', 'desc')->get();
+        $farmers = Owner::orderBy('created_at', 'DESC')->get();
         
         $farmerCollection = $farmers->transform(function($farmer){
             $date =  new \DateTime($farmer->created_at); //transform date string to date

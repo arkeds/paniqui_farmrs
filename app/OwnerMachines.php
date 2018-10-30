@@ -13,6 +13,7 @@ class OwnerMachines extends Model
     						"created_by", "status"];
     public $timestamps = false;
     protected $primaryKey = 'machId';
+    public $incrementing = false;
 
     public function machine(){
     	return $this->belongsTo('App\MachineList', 'machine_id', 'id');

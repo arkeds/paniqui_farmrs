@@ -20,5 +20,9 @@ class MachineList extends Model
     	return $this->hasMany('App\OwnerMachines', 'machine_id', 'id');
     }
 
+    public function codedName(){
+        return $this->machCode."::".$this->machName;
+    }
+
 
 }

@@ -32,7 +32,7 @@
 			<div class="col-md-4">
 				<div class="form-group">
 					<label>Area (ha):</label>
-					<input type="number" class="form-control" name="crop_area">
+					<input type="number" class="form-control" name="crop_area" required>
 				</div>
 			</div>
 		</div>
@@ -41,7 +41,7 @@
 			<div class="col-md-4">
 				<div class="form-group">
 					<label>Planting Date:</label>
-					<input type="date" class="form-control" name="crop_date">
+					<input type="date" class="form-control" name="crop_date" required>
 				</div>
 			</div>
 		</div>
@@ -54,3 +54,4 @@
 
 
 @endsection
+

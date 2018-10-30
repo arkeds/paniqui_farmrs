@@ -9,6 +9,7 @@ use Carbon\Carbon;
 use App\Owner;
 use App\MachinePurpose;
 use App\OwnerMachines;
+use App\MachineList;
 use App\Engine;
 
 class MachineController extends Controller
@@ -71,6 +72,18 @@ class MachineController extends Controller
         return redirect("/farmers/".$id."/machines")->with('message', 'Machine Registered');
     }
 
+
+    public function edit($farmer, $machine, Request $request){
+        $case = ['machId' => $machine, 'owner_id' => $farmer];
+        $farmer = Owner::findOrFail($farmer);
+        $machine = OwnerMachines::where($case)->firstOrFail();
+        $machines = MachineList::where('is_accessory', 0)->get();
+        return view('machines.edit', ['owner' => $farmer, 'machines' => $machines, 'machine' => $machine]);
+    }
+
+    public function update($farmer, $machine, Request $request){
+
+    }
 
     private function machineID(){
         $date = date_format(Now(),'Ym');

@@ -6,6 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 use App\Owner;
 use App\OwnerMachines;
+use App\MachinePurpose;
 use App\User;
 
 class AppServiceProvider extends ServiceProvider
@@ -28,6 +29,7 @@ class AppServiceProvider extends ServiceProvider
         View::share('active_users', User::where($active_case)->count());
         View::share('x_users', User::where($inactive_case)->count());
         View::share('all_users', User::where($all_users)->count());
+        View::share('machine_purposes', MachinePurpose::all());
     }
 
     /**

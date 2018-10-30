@@ -13,6 +13,7 @@
           <th>Owner Type</th>
           <th>Address</th>
           <th>Registered Date</th>
+          <th>Registered By</th>
           <th>Action</th>
         </tr>
       </thead>
@@ -23,8 +24,9 @@
           <td>{{ $owner->get_owner_type() }}</td>
           <td>{{ $owner->house .', '. $owner->barangay->name }}</td>
           <td>{{ $owner->registeredDate() }}</td>
+          <td>{{ $owner->creator->username }}</td>
           <td>
-            <a href="{{ url("farmers/$owner->id/profile") }}" class="btn btn-success btn-sm" title="Profile">View</a>
+            <a href="{{ url("farmers/$owner->id/profile") }}" class="btn btn-success btn-sm" title="Profile"><i class="fa fa-eye"></i></a>
             
           </td>
         </tr>

@@ -5,9 +5,9 @@
 	<div class="card-header bg-primary text-white">
 		Machines/Equipment Inventory
 	</div>
-	<br>
 	
-	<table class="table table-bordered">
+	
+	<table class="table table-bordered table-sm">
 		<thead>
 			<tr>
 				<th>Machine/Equipment</th>

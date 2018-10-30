@@ -45,7 +45,13 @@ Route::group(['prefix' => 'farmers', 'middleware' => ['auth']], function() {
     Route::get('/{id}/machines', 'MachineController@index');
     Route::get('/{id}/machines/create', 'MachineController@create');
     Route::post('/{id}/machines', 'MachineController@store');
+    Route::get('/{farmer}/machines/{machine}/edit', 'MachineController@edit');
+    Route::patch('/{farmer}/machines/{machine}', 'MachineController@update');
+
 });
+
+
+
 
 Route::group(['prefix' => 'farms', 'middleware' => ['auth']], function() {
     Route::get('/{id}', 'FarmController@show');
@@ -115,3 +121,18 @@ Route::group(['prefix' => 'reports', 'middleware' => ['auth']], function() {
 
 });
 
+
+
+Route::get('/pivot', function(){
+    $pivot = App\OwnerMachines::select(\DB::raw(' barangays.name as `brgy`, machines_list.machName'))
+                                    ->leftJoin('owners', 'owners.id', '=', 'registered_machines.owner_id')
+                                    ->leftJoin('machines_list', 'machines_list.id', '=', 'registered_machines.machine_id')
+                                    ->leftJoin('barangays', 'barangays.code', '=', 'owners.brgy')
+                                    ->get();
+
+
+
+  
+    
+    return view('blank', ['pivot' => $pivot]);
+});
