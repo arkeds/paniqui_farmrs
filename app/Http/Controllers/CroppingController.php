@@ -14,7 +14,7 @@ class CroppingController extends Controller
 {
     //
 	public function index(){
-        
+        // 
     }
 
     public function create($id){
@@ -31,6 +31,8 @@ class CroppingController extends Controller
     	$croppingEntry->crop_id = $request->crop_id;
     	$croppingEntry->crop_area = $request->crop_area;
     	$croppingEntry->planting_date = $request->crop_date;
+        $croppingEntry->water_source = $request->water_source;
+        $croppingEntry->variation = $request->crop_variation;
     	$croppingEntry->created_at = Carbon::now();
         $croppingEntry->created_by = Auth::user()->id;
     	$croppingEntry->save();

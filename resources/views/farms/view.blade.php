@@ -51,9 +51,11 @@
 				<tr>
 					<th>Crop Order</th>
 					<th>Crop</th>
+					<th>Variation</th>
 					<th>Area</th>
+					<th>Water Source</th>
 					<th>Planting Date</th>
-					<th>Recorded By</th>
+					{{-- <th>Recorded By</th> --}}
 				</tr>
 			</thead>
 			<tbody>
@@ -61,9 +63,11 @@
 				<tr>
 					<td>{{$cropping->cropOrder()}}</td>
 					<td>{{$cropping->crop->description}}</td>
+					<td>{{$cropping->variation}}</td>
 					<td>{{$cropping->landArea()}}</td>
+					<td>{{$cropping->waterSource()}}</td>
 					<td>{{$cropping->planting_date}}</td>
-					<td>{{$cropping->createdBy->username}}</td>
+					{{-- <td>{{$cropping->createdBy->username}}</td> --}}
 				</tr>
 				@endforeach
 			</tbody>

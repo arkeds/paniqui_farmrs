@@ -11,6 +11,16 @@
 		<div class="row">
 			<div class="col-md-4">
 				<div class="form-group">
+					<label>Planting Date:</label>
+					<input type="date" class="form-control" name="crop_date" required>
+				</div>
+			</div>
+			
+			
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<div class="form-group">
 					<label>Cropping No:</label>
 					<select class="form-control" name="crop_no" required>
 						<option value="1">1st Cropping</option>
@@ -21,6 +31,23 @@
 			</div>
 			<div class="col-md-4">
 				<div class="form-group">
+					<label>Area (hectares):</label>
+					<input type="number" class="form-control" name="crop_area" required>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form-group">
+					<label>Water Source:</label>
+					<select class="form-control" name="water_source" required>
+						<option value="IRI">Irrigated</option>
+						<option value="NIR">Non Irrigated/Rainfed</option>
+					</select>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<div class="form-group">
 					<label>Crop:</label>
 					<select class="form-control" name="crop_id" required>
 						@foreach($crops as $crop)
@@ -29,21 +56,16 @@
 					</select>
 				</div>
 			</div>
-			<div class="col-md-4">
+			<div class="col-md-8">
 				<div class="form-group">
-					<label>Area (ha):</label>
-					<input type="number" class="form-control" name="crop_area" required>
+					<label>Variation:</label>
+					<input type="text" class="form-control" name="crop_variation">
 				</div>
 			</div>
 		</div>
-		
 		<div class="row">
-			<div class="col-md-4">
-				<div class="form-group">
-					<label>Planting Date:</label>
-					<input type="date" class="form-control" name="crop_date" required>
-				</div>
-			</div>
+			
+			
 		</div>
 		@csrf
 		<button class="btn btn-primary">Save</button>

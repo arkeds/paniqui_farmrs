@@ -7,7 +7,7 @@
 	</div>
 	
 	
-	<table class="table table-bordered table-sm">
+	<table class="table table-bordered">
 		<thead>
 			<tr>
 				<th>Machine/Equipment</th>
@@ -20,11 +20,11 @@
 		<tbody>
 			@foreach($machines as $machine)
 			<tr>
-				<td>{{$machine->machName}}</td>
-				<td>{{$machine->capacity ? $machine->capacity.' '.$machine->machUnit : "N/A" }}</td>
-				<td>{{$machine->owner->coop}}</td>
-				<td>{{$machine->supplier}}</td>
-				<td>{{$machine->created_at}}</td>
+				<td>{{ $machine->machName}}</td>
+				<td>{{ $machine->capacity ? $machine->capacity.' '.$machine->machUnit : "N/A" }}</td>
+				<td>{{ $machine->owner->coop}}</td>
+				<td>{{ $machine->supplier}}</td>
+				<td>{{ $machine->created_at}}</td>
 			</tr>
 			@endforeach
 		</tbody>

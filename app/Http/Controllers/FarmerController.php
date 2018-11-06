@@ -39,13 +39,15 @@ class FarmerController extends Controller
     	$existAnimal = OwnerAnimal::where($matchCase)->first();
     	if ($existAnimal){
     		$animal = OwnerAnimal::where($matchCase)->first();
-    		$animal->animal_count = $request->animal_count;
+    		$animal->animal_count = $request->animal_count ? $request->animal_count : 0;
+            $animal->commercial_count = $request->commercial_count ? $request->commercial_count : 0;
     		$animal->save();
     	}else{
     		$farmAnimal = new OwnerAnimal();
     		$farmAnimal->owner_id = $request->farmer_id;
     		$farmAnimal->animal_id = $request->animal_id;
     		$farmAnimal->animal_count = $request->animal_count ? $request->animal_count : 0;
+            $farmAnimal->commercial_count = $request->commercial_count ? $request->commercial_count : 0;
     		$farmAnimal->save();
     	}
     	
@@ -61,8 +63,8 @@ class FarmerController extends Controller
     	$existTree = OwnerTree::where($matchCase)->first();
     	if ($existTree){
     		$tree = OwnerTree::where($matchCase)->first();
-    		$tree->bearing = $request->bearing;
-    		$tree->non_bearing = $request->non_bearing;
+    		$tree->bearing = $request->bearing ? $request->bearing : 0 ;
+    		$tree->non_bearing = $request->non_bearing ? $request->non_bearing : 0;
     		$tree->save();
     	}else{
     		$farmTree = new OwnerTree();

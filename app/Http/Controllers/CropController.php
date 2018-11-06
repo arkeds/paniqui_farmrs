@@ -17,6 +17,13 @@ class CropController extends Controller
     	$crop = new Crop();
     	$crop->description = strtoupper($request->crop_name);
     	$crop->save();
-	return redirect("/crops")->with('message', 'Farm Crop Added.');
+	   return redirect("/crops")->with('message', 'Farm Crop Added.');
+    }
+
+    public function update($id, Request $request){
+        $crop = Crop::findOrFail($id);
+        $crop->description = $request->crop_name ? $request->crop_name : $crop->description;
+        $crop->save();
+        return redirect('/crops')->with('message', 'Crop Updated');
     }
 }

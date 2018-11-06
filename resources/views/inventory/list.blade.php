@@ -7,7 +7,7 @@
 	</div>
 	<br>
 	<div class="card-body">
-		<table class="table table-sm inventoryTable">
+		<table class="table  inventoryTable">
 			<thead>
 				<tr>
 					<th>Machine/Equipment</th>

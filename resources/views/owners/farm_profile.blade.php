@@ -24,7 +24,8 @@
 		  		<thead>
 		  			<tr>
 		  				<th>Animal Type</th>
-		  				<th>Total</th>
+		  				<th>Backyard</th>
+		  				<th>Commercial</th>
 		  			</tr>
 		  		</thead>
 		  		<tbody>
@@ -32,6 +33,7 @@
 		  			<tr>
 		  				<td>{{ $ani->animalType->description }}</td>
 		  				<td>{{$ani->animal_count}}</td>
+		  				<td>{{$ani->commercial_count}}</td>
 		  			</tr>
 		  			@endforeach
 		  		</tbody>
@@ -96,8 +98,12 @@
       	</select>
       </div>
       <div class="form-group">
-      	<label>Total (heads)</label>
+      	<label>Backyard (heads)</label>
       	<input type="number" class="form-control" name="animal_count">
+      </div>
+      <div class="form-group">
+      	<label>Commercial (heads)</label>
+      	<input type="number" class="form-control" name="commercial_count">
       </div>
     </div>
     <div class="modal-footer">

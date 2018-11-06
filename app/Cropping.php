@@ -8,7 +8,7 @@ class Cropping extends Model
 {
     //
     protected $table = "croppings";
-    protected $fillable = ["id", "farm_id", "cropping_no", "crop_id", "crop_area", "planting_date", "created_at", "created_by"];
+    protected $fillable = ["id", "farm_id", "cropping_no", "crop_id", "crop_area", "water_source", "variation", "planting_date", "created_at", "created_by"];
     public $timestamps = false;
 
     public function landArea(){
@@ -40,5 +40,15 @@ class Cropping extends Model
 
     public function createdBy(){
         return $this->belongsTo('App\User', 'created_by');
+    }
+
+    public function waterSource(){
+        if ($this->water_source == "IRI") {
+            return "Irrigated";
+        }elseif ($this->water_source == "NIR") {
+            return "Non Irrigated";
+        }else{
+            return "";
+        }
     }
 }

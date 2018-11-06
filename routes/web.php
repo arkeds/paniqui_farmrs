@@ -129,10 +129,10 @@ Route::get('/pivot', function(){
                                     ->leftJoin('machines_list', 'machines_list.id', '=', 'registered_machines.machine_id')
                                     ->leftJoin('barangays', 'barangays.code', '=', 'owners.brgy')
                                     ->get();
-
-
-
   
-    
     return view('blank', ['pivot' => $pivot]);
+});
+
+Route::get('/layout', function(){
+    return view('layout');
 });
