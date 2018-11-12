@@ -51,4 +51,16 @@ class Cropping extends Model
             return "";
         }
     }
+
+    public function farm(){
+        return $this->belongsTo('App\FarmerFarm');
+    }
+
+    public function farmOwner($farm){
+        return \App\Owner::rightJoin('farmer_farms', 'farmer_farms.owner_id', 'owners.id')
+                            ->join('owners_profile', 'owners_profile.id', '=', 'owners.id')
+                            ->where('farmer_farms.id', $this->farm_id)
+                            ->first();
+        
+    }
 }

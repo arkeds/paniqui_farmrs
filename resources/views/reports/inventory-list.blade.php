@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('reports')
 @section('content')
 
 
@@ -81,10 +81,17 @@ $(function() {
 	        text: '<i class="fa fa-file-pdf"></i> PDF',
 	        title: 'Registered Farmers',
 	        className: 'btn-success',
+	        title: function(){return $('.card-header').text()},
+	        orientation: 'landscape',
+	        pageSize: 'LEGAL',
 	        exportOptions: {
 	            modifier: { search: 'applied' },
 	            //columns: [ 0, 1]
 	            
+	        },
+	        customize: function(doc){
+	        	doc.content[1].table.widths = 
+	        	        Array(doc.content[1].table.body[0].length + 1).join('*').split('');
 	        },
 	        download: 'open',
 	        init: function(api, node, config) {

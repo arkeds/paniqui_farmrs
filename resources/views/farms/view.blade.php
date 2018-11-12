@@ -51,11 +51,11 @@
 				<tr>
 					<th>Crop Order</th>
 					<th>Crop</th>
-					<th>Variation</th>
-					<th>Area</th>
+					<th>Variety</th>
+					<th>Area (Hectares)</th>
 					<th>Water Source</th>
 					<th>Planting Date</th>
-					{{-- <th>Recorded By</th> --}}
+					<th>Actions</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -64,10 +64,19 @@
 					<td>{{$cropping->cropOrder()}}</td>
 					<td>{{$cropping->crop->description}}</td>
 					<td>{{$cropping->variation}}</td>
-					<td>{{$cropping->landArea()}}</td>
+					<td align="center">{{$cropping->crop_area}}</td>
 					<td>{{$cropping->waterSource()}}</td>
 					<td>{{$cropping->planting_date}}</td>
-					{{-- <td>{{$cropping->createdBy->username}}</td> --}}
+					<td>
+						<a href="{{url("/croppings/".$cropping->id."/edit")}}" title="Edit"><i style="color: #ff851b;" class="fa fa-edit"></i></a>
+						&nbsp;&nbsp;&nbsp;
+						<a href="javascript:void(0)" onclick="event.preventDefault();
+                    			 document.getElementById('cform{{$cropping->id}}').submit();" title="Delete"><i style="color: #ff4136;" class="fa fa-trash"></i></a>
+                    	<form id="cform{{$cropping->id}}" action="{{url("/croppings/".$cropping->id)}}" method="POST" style="display: none;">
+                    		@method('DELETE')
+            	            @csrf
+            	        </form>
+					</td>
 				</tr>
 				@endforeach
 			</tbody>

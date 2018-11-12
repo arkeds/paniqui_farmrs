@@ -14,4 +14,8 @@ class OwnerAnimal extends Model
     public function animalType(){
     	return $this->belongsTo('App\Animal', 'animal_id');
     }
+
+    public function owner(){
+    	return $this->belongsTo('App\Owner', 'owner_id', 'id');
+    }
 }

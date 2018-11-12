@@ -76,12 +76,38 @@ class MachineController extends Controller
     public function edit($farmer, $machine, Request $request){
         $case = ['machId' => $machine, 'owner_id' => $farmer];
         $farmer = Owner::findOrFail($farmer);
-        $machine = OwnerMachines::where($case)->firstOrFail();
+        $machineData = OwnerMachines::where($case)->firstOrFail();
         $machines = MachineList::where('is_accessory', 0)->get();
-        return view('machines.edit', ['owner' => $farmer, 'machines' => $machines, 'machine' => $machine]);
+        return view('machines.edit', ['machine_id' => $machine,'owner' => $farmer, 'machines' => $machines, 'machine' => $machineData]);
     }
 
     public function update($farmer, $machine, Request $request){
+        //return $request->all();
+        \DB::transaction(function () use ($request, $machine) {
+            $ownedMachine = OwnerMachines::findOrFail($machine); //find machine data
+            //replace machine data from request
+            $ownedMachine->serial = $request->mach_serial ? $request->mach_serial : $ownedMachine->mach_serial;
+            $ownedMachine->brand = $request->mach_brand ? $request->mach_brand : $ownedMachine->brand;
+            $ownedMachine->capacity = $request->mach_capacity ? $request->mach_capacity : $ownedMachine->capacity;
+            $ownedMachine->acquire_mode = $request->mach_acqmode ? $request->mach_acqmode : $ownedMachine->acquire_mode;
+            $ownedMachine->acquisition_year = $request->mach_year ? $request->mach_year : $ownedMachine->acquisition_year;
+            $ownedMachine->supplier = $request->mach_supplier ? $request->mach_supplier : $ownedMachine->supplier;
+            $ownedMachine->supplier_address = $request->supplier_address ? $request->supplier_address : $ownedMachine->supplier_address;
+            $ownedMachine->save();
+
+            if($request->has_engine){//check if request has engine data
+                $ownedEngine = Engine::findOrFail($request->engine_id); //replace engine data from request
+                $ownedEngine->serial = $request->eng_serial ? $request->eng_serial : $engine->serial;
+                $ownedEngine->brand = $request->eng_brand ? $request->eng_brand : $engine->brand;
+                $ownedEngine->acquire_mode = $request->eng_acqmode ? $request->eng_acqmode : $engine->acquire_mode;
+                $ownedEngine->acquisition_year = $request->eng_year ? $request->eng_year : $engine->acquisition_year;
+                $ownedEngine->rated_power = $request->eng_rpower ? $request->eng_rpower . $request->eng_runit : $engine->rated_power;
+                $ownedEngine->save();
+            }
+        });
+
+
+        return redirect("/farmers/".$farmer."/machines/".$machine."/edit")->with('message', 'Machine Updated');
 
     }
 

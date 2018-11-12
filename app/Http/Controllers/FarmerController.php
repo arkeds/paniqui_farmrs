@@ -25,7 +25,8 @@ class FarmerController extends Controller
     			'farmer' => $farmer,
     			'animals'=> $animals,
     			'trees' => $trees
-    		]);
+    		]
+        );
     }
 
 

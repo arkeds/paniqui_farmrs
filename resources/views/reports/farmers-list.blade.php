@@ -1,9 +1,9 @@
-@extends('layout')
+@extends('reports')
 @section('content')
 
 <div class="card" >
   <div class="card-header text-white bg-primary ">
-    Registered Farmers
+    <span class="rTitle">Registered Farmers</span>
     <a  href="{{url("/reports/farmers/barangay")}}" class="btn btn-success float-right">Barangay</a>
   </div>
   
@@ -13,7 +13,7 @@
       <thead>
         <tr>
           <th>Name</th>
-          <th>Owner Type</th>
+          {{-- <th>Owner Type</th> --}}
           <th>Address</th>
           <th>Barangay</th>
           <th>Registered Date</th>
@@ -39,7 +39,7 @@ $(function() {
         ajax: '{!! route('reports.farmer.getFarmers') !!}',
         columns: [
             { data: 'name', name: 'name' },
-            { data: 'owner_type', name: 'owner_type' },
+            // { data: 'owner_type', name: 'owner_type' },
             { data: 'address', name: 'address' },
             { data: 'barangay', name: 'barangay' },
             { data: 'registered_at', name: 'registered_at' },
@@ -77,10 +77,17 @@ $(function() {
 	        text: '<i class="fa fa-file-pdf"></i> PDF',
 	        title: 'Registered Farmers',
 	        className: 'btn-success',
+	        title: function(){return $('.rTitle').text()},
+	        orientation: 'landscape',
+	        pageSize: 'LEGAL',
 	        exportOptions: {
 	            modifier: { search: 'applied' },
 	            //columns: [ 0, 1]
 	            
+	        },
+	        customize: function(doc){
+	        	doc.content[1].table.widths = 
+	        	        Array(doc.content[1].table.body[0].length + 1).join('*').split('');
 	        },
 	        download: 'open',
 	        init: function(api, node, config) {

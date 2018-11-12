@@ -14,4 +14,8 @@ class OwnerTree extends Model
     public function treeType(){
     	return $this->belongsTo('App\Tree', 'tree_id');
     }
+
+    public function owner(){
+    	return $this->belongsTo('App\Owner', 'owner_id', 'id');
+    }
 }

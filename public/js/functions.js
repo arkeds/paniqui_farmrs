@@ -70,3 +70,23 @@ function showEngineForm(control){
 		engine_div.style.display = "none";
 	}
 }
+
+//redirect on animal select change
+function animalRaisers(animal){
+	window.location.href = "/reports/animals/"+animal+"/raisers";
+	
+}
+
+//redirect on tree select change
+function treeGrowers(tree){
+	window.location.href = "/reports/trees/"+tree+"/growers";
+	
+}
+
+
+function setCropReport(){
+	let crop = document.querySelector('#crop').value;
+	let cropForm = document.querySelector("#cropReport");
+	cropForm.action = "/reports/crops/"+crop+"/croppings"
+	$('#cropForm').submit();
+}

@@ -3,11 +3,11 @@
 
 
 <div class="card">
-	<div class="card-header bg-danger text-white">
-  		Edit Machine( DO NOT UPDATE. UNDER DEVELOPMENT)
+	<div class="card-header bg-warning text-white">
+  		Edit Machine
   	</div>
   <div class="card-body">
-  	<form action="{{url("/farmers/".$owner->id."/machines")}}" method="POST">
+  	<form action="{{url("/farmers/".$owner->id."/machines/".$machine_id)}}" method="POST">
     <h4 class="card-title">Machine Information</h4>
     
   	
@@ -15,7 +15,7 @@
     	
     	<div class="col-md-4">
     		<label>Machine Type</label>
-    		<select class="form-control" id="machines" name="mach_name" onchange="setUnitCapacity()">
+    		<select class="form-control" id="machines" name="mach_name" onchange="setUnitCapacity()" >
                 @foreach($machines as $list)
              
                 <option {{$list->id == $machine->machine->id ? "SELECTED" : "" }} data-capacity="{{$list->machUnit}}"  value="{{$list->id}}">{{ $list->codedName() }}</option>
@@ -42,7 +42,7 @@
 		      <input type="text" class="form-control" name="mach_capacity" value="{{$machine->capacity}}">
 		      <div class="input-group-append">
 		        <span class="input-group-text" id="unit_capacity"></span>
-		        <input type="hidden" name="unit_text" value="" id="unit_text">
+		        <input type="hidden"  value="" id="unit_text">
 		      </div>
 		    </div>
     	</div>
@@ -87,6 +87,7 @@
     <br>
     @if ($machine->engine)
     <h4>Engine Information</h4>
+    <input type="hidden" name="engine_id" value="{{$machine->engine ? $machine->engine->id : ""}}">
     <div class="row">
         <div class="col-md-4">
             <div class="form-group">
@@ -153,3 +154,14 @@
 <br>
 
 @endsection
+
+@push('scripts')
+<script type="text/javascript">
+    window.addEventListener("load",function(){
+        let machine_select = document.querySelector('#machines');
+        let capacity = machine_select[machine_select.selectedIndex].getAttribute('data-capacity'); 
+        document.querySelector('#unit_capacity').innerHTML = capacity;
+        document.querySelector('#unit_text').text = capacity;
+    },false);
+</script>
+@endpush

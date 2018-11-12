@@ -1,4 +1,5 @@
-let base_url = "http://paniqui.local:8000/"
+//let base_url = "http://paniqui.local:8000/";
+let base_url = "/";
 
 
 $('.dTable').DataTable({
@@ -28,7 +29,7 @@ $('.rTable').DataTable({
 	        text: '<i class="fa fa-file-excel"></i> Excel',
 	        className: 'btn-success',
 	        messageTop: 'Inventory',
-	        title: 'Machine/Equipment Inventory',
+	        title: function(){return $('.card-header').text()},
 	        exportOptions: {
 	            modifier: { search: 'applied' },
 	            columns: [ 0, 1]
@@ -41,7 +42,7 @@ $('.rTable').DataTable({
 	        extend: 'pdf',
 	        text: '<i class="fa fa-file-pdf"></i> PDF',
 	        className: 'btn-success',
-	        title: 'Paniqui Farmers Registration System',
+	        title: function(){return $('.card-header').text()},
 	        exportOptions: {
 	            modifier: { search: 'applied' },
 	            columns: [ 0, 1]
@@ -87,7 +88,9 @@ $('.inventoryTable').DataTable({
 	        text: '<i class="fa fa-file-excel"></i> Excel',
 	        className: 'btn-success',
 	        messageTop: 'Inventory',
-	        title: 'Machine/Equipment Inventory',
+	        title: function(){return $('.card-header').text()},
+	        orientation: 'landscape',
+	        pageSize: 'LEGAL',
 	        exportOptions: {
 	            modifier: { search: 'applied' },
 	            columns: [ 0, 1]
@@ -142,7 +145,7 @@ $('.barangay_reports').DataTable({
 	        text: '<i class="fa fa-file-excel"></i> Excel',
 	        className: 'btn-success',
 	        messageTop: 'Inventory',
-	        title: 'Machine/Equipment Inventory',
+	        title: function(){return $('.card-header').text()},
 	        exportOptions: {
 	            modifier: { search: 'applied' },
 	            
@@ -155,7 +158,7 @@ $('.barangay_reports').DataTable({
 	        extend: 'pdf',
 	        text: '<i class="fa fa-file-pdf"></i> PDF',
 	        className: 'btn-success',
-	        title: 'Machine/Equipment Inventory',
+	        title: function(){return $('.card-header').text()},
 	        orientation: 'landscape',
 	        pageSize: 'LEGAL',
 	        exportOptions: {
@@ -183,4 +186,62 @@ $('#inventory_table').DataTable({
 	dom: 'frtip',
 	theme: 'bootstrap',
 	searching: true
+});
+
+
+$('.raisersTable').DataTable({
+	dom: 'lfBrtip',
+	searching: true,
+	buttons: [
+		{
+	        extend: 'print',
+	        text: '<i class="fa fa-print"></i> Print',
+	        className: 'btn-success',
+	        exportOptions: {
+	            modifier: { search: 'applied' },
+	            
+	        },
+	        init: function(api, node, config) {
+	           $(node).removeClass('btn-default')
+	        }
+	    },
+	    {
+	        extend: 'csv',
+	        text: '<i class="fa fa-file-excel"></i> Excel',
+	        className: 'btn-success',
+	        messageTop: 'Inventory',
+	        title: function(){return $('.card-header').text()},
+	        exportOptions: {
+	            modifier: { search: 'applied' },
+	            
+	        },
+	        init: function(api, node, config) {
+	           $(node).removeClass('btn-default')
+	        }
+	    },
+	    {
+	        extend: 'pdf',
+	        text: '<i class="fa fa-file-pdf"></i> PDF',
+	        className: 'btn-success',
+	        title: function(){return $('.card-header').text()},
+	        orientation: 'landscape',
+	        pageSize: 'LEGAL',
+	        exportOptions: {
+	            modifier: { search: 'applied' },
+	            
+	            
+	        },
+	        customize: function(doc){
+	        	doc.content[1].table.widths = 
+	        	        Array(doc.content[1].table.body[0].length + 1).join('*').split('');
+	        },
+	        download: 'open',
+	        init: function(api, node, config) {
+	           $(node).removeClass('btn-default')
+	        }
+
+	    }
+
+	]
+
 });

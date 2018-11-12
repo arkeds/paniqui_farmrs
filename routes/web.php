@@ -57,9 +57,14 @@ Route::group(['prefix' => 'farms', 'middleware' => ['auth']], function() {
     Route::get('/{id}', 'FarmController@show');
     Route::get('/{id}/croppings/create', 'CroppingController@create');
     Route::post('/{id}/croppings/create', 'CroppingController@store');
+
 });
 
-
+Route::group(['prefix' => 'croppings', 'middleware' => ['auth']], function() {
+    Route::get('/{id}/edit', 'CroppingController@view');
+    Route::patch('/{id}', 'CroppingController@update');
+    Route::delete('/{id}', 'CroppingController@delete');
+});
 
 Route::group(['prefix' => 'animals', 'middleware' => ['auth', 'admin']], function() {
     Route::get('/', 'AnimalController@index');
@@ -119,6 +124,11 @@ Route::group(['prefix' => 'reports', 'middleware' => ['auth']], function() {
     Route::get('/inventory', 'ReportsController@inventory')->name('reports.inventory');
     Route::get('/inventory/getInventory', 'ReportsController@getInventory')->name('reports.inventory.getInventory');
 
+    Route::get('/cooperatives', 'ReportsController@cooperatives');
+    Route::get('/animals/{animal_id}/raisers', 'ReportsController@animals');
+    Route::get('/trees/{tree_id}/growers', 'ReportsController@trees');
+
+    Route::get('/crops/{crop}/croppings', 'ReportsController@croppings');
 });
 
 
