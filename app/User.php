@@ -40,4 +40,8 @@ class User extends Authenticatable
             return "Disabled";
         }
     }
+
+    public function changeStatus(){
+        $this->attributes['is_active'] = !$this->is_active;
+    }
 }

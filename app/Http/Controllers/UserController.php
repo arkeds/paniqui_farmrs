@@ -69,7 +69,7 @@ class UserController extends Controller
 
     public function status($id){
     	$user = User::findOrFail($id);
-    	$user->is_active = !$user->is_active;
+    	$user->changeStatus();
     	$user->save();
     	if (Auth::user()->root == 1){
     		return redirect()->back();
