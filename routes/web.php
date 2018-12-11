@@ -13,7 +13,7 @@
 
 Route::get('/login', 'Authenticate\LoginController@index')->name('login')->middleware('guest');
 Route::post('/login', 'Authenticate\LoginController@authenticate')->middleware('guest');
-Route::post('/logout', 'Authenticate\LoginController@logout')->middleware(['auth']);
+Route::post('/logout', 'Authenticate\LoginController@logout');
 
 Route::group(['middleware' => ['auth']], function() {
     Route::get('/', 'DashboardController@index');
@@ -133,15 +133,15 @@ Route::group(['prefix' => 'reports', 'middleware' => ['auth']], function() {
 
 
 
-Route::get('/pivot', function(){
-    $pivot = App\OwnerMachines::select(\DB::raw(' barangays.name as `brgy`, machines_list.machName'))
-                                    ->leftJoin('owners', 'owners.id', '=', 'registered_machines.owner_id')
-                                    ->leftJoin('machines_list', 'machines_list.id', '=', 'registered_machines.machine_id')
-                                    ->leftJoin('barangays', 'barangays.code', '=', 'owners.brgy')
-                                    ->get();
+// Route::get('/pivot', function(){
+//     $pivot = App\OwnerMachines::select(\DB::raw(' barangays.name as `brgy`, machines_list.machName'))
+//                                     ->leftJoin('owners', 'owners.id', '=', 'registered_machines.owner_id')
+//                                     ->leftJoin('machines_list', 'machines_list.id', '=', 'registered_machines.machine_id')
+//                                     ->leftJoin('barangays', 'barangays.code', '=', 'owners.brgy')
+//                                     ->get();
   
-    return view('blank', ['pivot' => $pivot]);
-});
+//     return view('blank', ['pivot' => $pivot]);
+// });
 
 Route::get('/layout', function(){
     return view('layout');

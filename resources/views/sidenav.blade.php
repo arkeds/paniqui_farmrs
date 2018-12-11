@@ -24,15 +24,9 @@
   	<a href="/dashboard"><i class="fa fa-tachometer-alt"></i> Dashboard</a>
   </li>
   <li class="list-group-item d-flex justify-content-between align-items-center">
-  	<a data-toggle="collapse" href="#collapse1"><i class="fa fa-users"></i> Farmers</a>
-    {{-- <span class="badge bg-primary text-white">{{$farmerCount}}</span> --}}
+    <a href="/farmers"><i class="fa fa-users"></i> Farmers</a>
   </li>
-	  	<div id="collapse1" class="collapse">
-      <ul class="list-group">
-        <li class="list-group-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/farmers/create"><i class="fa fa-pencil-alt"></i> Register</a</li>
-        <li class="list-group-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/farmers"><i class="fa fa-list"></i> List</a></li>
-      </ul>
-    </div>
+  
   <li class="list-group-item d-flex justify-content-between align-items-center">
   	<a href="/machines"><i class="fa fa-cogs"></i> Machines/Equipment</a>
   </li>

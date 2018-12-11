@@ -4,7 +4,11 @@
 <div class="card" >
   <div class="card-header text-white bg-primary ">
     Registered Owners
-    <button class="btn btn-sm btn-success float-right" data-toggle="modal" data-target="#searchModal"><i class="fa fa-search"></i> Search</button>
+    
+    <div class="btn-group float-right" role="group" aria-label="Basic example">
+      <button class="btn btn-sm btn-success " data-toggle="modal" data-target="#searchModal"><i class="fa fa-search"></i> Search</button>
+      <a href="/farmers/create" class="btn btn-sm btn-success"><i class="fa fa-plus"></i> Register</a>
+    </div>
   </div>
     <table class="table table-hover table-sm">
       <thead>
