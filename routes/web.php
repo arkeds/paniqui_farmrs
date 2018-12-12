@@ -133,7 +133,7 @@ Route::group(['prefix' => 'reports', 'middleware' => ['auth']], function() {
 
 
 
-Route::group(['prefix' => 'machine-equipment'], function() {
+Route::group(['prefix' => 'machine-equipment', 'middleware' => ['auth', 'root']], function() {
     Route::get('/', 'MachineEquipmentController@index');
     Route::post('/', 'MachineEquipmentController@save');
     Route::get('/create', 'MachineEquipmentController@create');
