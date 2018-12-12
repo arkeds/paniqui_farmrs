@@ -53,6 +53,11 @@
         <li class="list-group-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/crops"><i class="fa fa-cannabis"></i> Crops</a></li>
       </ul>
     </div>
+  @endif
+  @if(Auth::user()->root)
+  <li class="list-group-item d-flex justify-content-between align-items-center">
+    <a href="/machine-equipment"><i class="fa fa-sliders-h"></i> Machine Entities</a>
+  </li>
   @endif  
   <li class="list-group-item d-flex justify-content-between align-items-center">
     <a  href="/reports"><i class="fa fa-chart-bar"></i> Reports</a>

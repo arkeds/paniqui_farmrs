@@ -5,7 +5,7 @@
 	<div class="card-header bg-primary text-white">
 		Users
 
-		<button class="btn btn-success float-right" type="button" data-toggle="modal" data-target="#searchModal">Search</button>
+		<button class="btn btn-sm btn-success float-right" type="button" data-toggle="modal" data-target="#searchModal">Search</button>
 	</div>
 	<table class="table">
 		<thead>
@@ -31,8 +31,6 @@
 					@endif
 				</td>
 				<td>
-					<a href="{{url("/users/".$user->id."/logs")}}" class="btn btn-success btn-sm"><i class="fa fa-list" title="Activity Log"></i></a>
-					
 					<a href="{{url("/users/".$user->id."/edit")}}" class="btn btn-warning btn-sm"><i class="fa fa-edit" title="Edit User"></i></a>
 
 					@if(!$user->is_active)

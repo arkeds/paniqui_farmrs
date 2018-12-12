@@ -133,16 +133,10 @@ Route::group(['prefix' => 'reports', 'middleware' => ['auth']], function() {
 
 
 
-// Route::get('/pivot', function(){
-//     $pivot = App\OwnerMachines::select(\DB::raw(' barangays.name as `brgy`, machines_list.machName'))
-//                                     ->leftJoin('owners', 'owners.id', '=', 'registered_machines.owner_id')
-//                                     ->leftJoin('machines_list', 'machines_list.id', '=', 'registered_machines.machine_id')
-//                                     ->leftJoin('barangays', 'barangays.code', '=', 'owners.brgy')
-//                                     ->get();
-  
-//     return view('blank', ['pivot' => $pivot]);
-// });
-
-Route::get('/layout', function(){
-    return view('layout');
+Route::group(['prefix' => 'machine-equipment'], function() {
+    Route::get('/', 'MachineEquipmentController@index');
+    Route::post('/', 'MachineEquipmentController@save');
+    Route::get('/create', 'MachineEquipmentController@create');
+    Route::get('/{id}/edit', 'MachineEquipmentController@edit');
+    Route::patch('/{id}', 'MachineEquipmentController@update');
 });

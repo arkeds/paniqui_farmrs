@@ -76,7 +76,7 @@
 			<div class="card-header bg-primary text-white">
 				<center>
 					<h2><i class="fa fa-tree fa-lg"></i> </h2>
-					Fruit Tree Growers
+					Fruit Tree Farmers
 				</center>
 			</div>
 		</div>
@@ -88,7 +88,7 @@
 			<div class="card-header bg-primary text-white">
 				<center>
 					<h2><i class="fa fa-apple-alt fa-lg"></i> </h2>
-					Fruit Tree Growers
+					Crop Farmers
 				</center>
 			</div>
 		</div>
