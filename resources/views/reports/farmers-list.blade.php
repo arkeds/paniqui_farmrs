@@ -12,11 +12,20 @@
     <table class="table table-sm" id="farmers-table">
       <thead>
         <tr>
-          <th>Name</th>
-          {{-- <th>Owner Type</th> --}}
-          <th>Address</th>
-          <th>Barangay</th>
-          <th>Registered Date</th>
+        	<th>Barangay</th>
+        	<th>Sitio/Zone</th>
+        	<th>ID</th>
+			<th>Last Name</th>
+			<th>First Name</th>
+			<th>Middle Name</th>
+			<th>Ext.</th>
+			<th>Gender</th>
+			<th>Birthdate</th>
+			<th>Education</th>
+			<th>Contact No.</th>
+			
+
+			<th>Registered Date</th>
           
         </tr>
       </thead>
@@ -38,10 +47,19 @@ $(function() {
         serverSide: true,
         ajax: '{!! route('reports.farmer.getFarmers') !!}',
         columns: [
-            { data: 'name', name: 'name' },
-            // { data: 'owner_type', name: 'owner_type' },
-            { data: 'address', name: 'address' },
-            { data: 'barangay', name: 'barangay' },
+        	{ data: 'barangay', name: 'barangay' },
+        	{ data: 'address', name: 'address' },
+        	{ data: 'id', name: 'id' },
+            { data: 'last_name', name: 'last_name' },
+            { data: 'first_name', name: 'first_name' },
+            { data: 'middle_name', name: 'middle_name' },
+            { data: 'ext', name: 'ext' },
+            { data: 'gender', name: 'gender' },
+            { data: 'birthdate', name: 'birthdate' },
+            { data: 'education', name: 'education' },
+            { data: 'contact', name: 'contact' },
+            
+            
             { data: 'registered_at', name: 'registered_at' },
             
         ],

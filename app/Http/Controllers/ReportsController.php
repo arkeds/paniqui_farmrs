@@ -89,10 +89,17 @@ class ReportsController extends Controller
         $farmerCollection = $farmers->transform(function($farmer){
             $date =  new \DateTime($farmer->created_at); //transform date string to date
             return [
-                'name' => $farmer->coop,
-                // 'owner_type' => $farmer->get_owner_type(),
+                'id' => $farmer->id,
+                'first_name' => $farmer->profile->fName,
+                'middle_name' => $farmer->profile->mName,
+                'last_name' => $farmer->profile->lName,
+                'ext' => $farmer->profile->extension,
                 'address' => $farmer->house,
                 'barangay' => $farmer->barangay->name,
+                'birthdate' => $farmer->profile->birthdate,
+                'contact' => $farmer->profile->contact,
+                'education' => $farmer->profile->education,
+                'gender' => $farmer->profile->sex(),
                 'registered_at' => $date->format('Y-M-d')
             ];
         });
