@@ -55,7 +55,15 @@
       
     </div>
     <div class="modal-body">
-      <input type="text" name="search" class="form-control">
+      <div class="form-group">
+        <label>Search By</label>
+        <select class="form-control" name="searchBy">
+          <option value="id">ID</option>
+          <option value="name">Name</option>
+        </select>
+      </div>
+      
+      <input type="text" name="search" class="form-control" placeholder="Search Query">
     </div>
     <div class="modal-footer">
       

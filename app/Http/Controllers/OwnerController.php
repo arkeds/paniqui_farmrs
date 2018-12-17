@@ -13,12 +13,35 @@ class OwnerController extends Controller
 {
     //
     public function index(Request $request){
-        $search = "%".$request->search."%";
-        if (!$search){
-            $owners = Owner::orderBy('created_at', 'desc')->paginate(10);    
-        }else {
-            $owners = Owner::where('coop','like', $search)->orderBy('created_at', 'desc')->paginate(10);
+        switch ($request->searchBy) {
+            case 'id':
+                $search = "%".$request->search."%";
+                if (!$search){
+                    $owners = Owner::orderBy('created_at', 'desc')->paginate(10);    
+                }else {
+                    $owners = Owner::where('id','like', $search)->orderBy('created_at', 'desc')->paginate(10);
+                }
+                break;
+
+            case 'name':
+                $search = "%".$request->search."%";
+                if (!$search){
+                    $owners = Owner::orderBy('created_at', 'desc')->paginate(10);    
+                }else {
+                    $owners = Owner::where('coop','like', $search)->orderBy('created_at', 'desc')->paginate(10);
+                }
+                break;
+
+            default:
+                $search = "%".$request->search."%";
+                if (!$search){
+                    $owners = Owner::orderBy('created_at', 'desc')->paginate(10);    
+                }else {
+                    $owners = Owner::where('coop','like', $search)->orderBy('created_at', 'desc')->paginate(10);
+                }
+                break;
         }
+        
         
 
     	return view('owners.list', ['owners' => $owners]);
